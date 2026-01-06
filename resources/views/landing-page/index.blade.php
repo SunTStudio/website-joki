@@ -205,8 +205,8 @@
     <section id="teknologi" class="py-5">
         <div class="container">
             <div class="text-center mb-5">
-                <h2 class="fw-bold">Teknologi</h2>
-                <p class="text-muted">Kami menggunakan teknologi modern untuk hasil terbaik</p>
+                <h2 class="fw-bold text-light">Teknologi</h2>
+                <p class="text-light">Kami menggunakan teknologi modern untuk hasil terbaik</p>
             </div>
             <div class="row row-cols-2 row-cols-md-4 g-4">
                 @foreach ([['name' => 'Laravel', 'logo' => 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/laravel/laravel-original.svg'], ['name' => 'HTML', 'logo' => 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg'], ['name' => 'CSS', 'logo' => 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original.svg'], ['name' => 'Bootstrap', 'logo' => 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/bootstrap/bootstrap-original.svg'], ['name' => 'JavaScript', 'logo' => 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg'], ['name' => 'jQuery', 'logo' => 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/jquery/jquery-original.svg'], ['name' => 'PHP', 'logo' => 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/php/php-original.svg'], ['name' => 'MySQL', 'logo' => 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql/mysql-original.svg']] as $tech)
