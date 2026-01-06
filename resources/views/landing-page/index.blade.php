@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Bootstrap demo</title>
+    <title>Let's Coding</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -27,7 +27,7 @@
 <body>
     <nav class="navbar navbar-expand-lg fixed-top navbar-dark py-3" id="navbar">
         <div class="container">
-            <a class="navbar-brand fw-bold" href="#">Judul</a>
+            <h3 class="fw-bold text-light">Let's<span class="text-warning">Coding</span></h3>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
                 aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -348,7 +348,7 @@
         <div class="container">
             <div class="row g-4">
                 <div class="col-lg-4 col-md-6">
-                    <h3 class="fw-bold mb-3">Joki<span class="text-primary">Coding</span></h3>
+                    <h3 class="fw-bold mb-3">Let's<span class="text-primary">Coding</span></h3>
                     <p class="text-white-50">Solusi terbaik untuk tugas coding dan pembuatan website profesional.
                         Cepat, Aman, dan Terpercaya.</p>
                 </div>
@@ -388,7 +388,7 @@
             </div>
             <hr class="my-4 border-secondary">
             <div class="text-center text-white-50">
-                <small>&copy; 2024 JokiCoding. All rights reserved.</small>
+                <small>&copy; 2025 PT Sintaks Media Solusindo. All rights reserved.</small>
             </div>
         </div>
     </footer>
