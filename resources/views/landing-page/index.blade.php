@@ -11,6 +11,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&display=swap"
         rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
     <link rel="stylesheet" href="css/landing_page.css">
     <style>
         .hover-card {
@@ -20,6 +21,14 @@
         .hover-card:hover {
             transform: translateY(-5px);
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2) !important;
+        }
+
+        section {
+            scroll-margin-top: 100px;
+        }
+
+        .opacity-0 {
+            opacity: 0;
         }
     </style>
 </head>
@@ -35,20 +44,20 @@
             <div class="collapse navbar-collapse" id="navbarText">
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-center">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                        <a class="nav-link active" aria-current="page" href="#hero">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Produk</a>
+                        <a class="nav-link" href="#produk-kami">Produk</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Portofolio</a>
+                        <a class="nav-link" href="#portofolio">Portofolio</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Kontak</a>
+                        <a class="nav-link" href="#kontak">Kontak</a>
                     </li>
                     {{-- login --}}
                     <li class="nav-item ms-lg-3">
-                        <a class=" btn btn-light btn-sm fw-bold" href="#">Login</a>
+                        <a class=" btn btn-light btn-sm fw-bold" href="{{ route('login') }}">Login</a>
                     </li>
                 </ul>
             </div>
@@ -58,7 +67,7 @@
     <section id="hero" class="d-flex align-items-center">
         <div class="container">
             <div class="row align-items-center">
-                <div class="col-lg-7 text-white">
+                <div class="col-lg-7 text-white animate__animated animate__fadeInLeft">
                     <h1 class="display-4 fw-bold mb-3">Tugas Coding Numpuk? <br> Serahkan pada Ahlinya!</h1>
                     <p class="lead mb-4">Jasa joki tugas website dan programming profesional. Pengerjaan cepat, coding
                         rapi, dan harga pas di kantong mahasiswa.</p>
@@ -66,7 +75,7 @@
                         class="btn btn-light text-primary fw-bold rounded-pill px-4 py-2 shadow-sm">Konsultasi
                         Sekarang</a>
                 </div>
-                <div class="col">
+                <div class="col animate__animated animate__zoomIn">
                     {{-- kasih shadow --}}
                     <img src="{{ asset('hero.png') }}" alt="" class="img-fluid"
                         style="filter: drop-shadow(0 0 1rem rgba(0, 0, 0, 0.2));">
@@ -80,9 +89,9 @@
                 <p>Produk Kami</p>
             </div>
             <div class="row">
-                <div class="col-md-4 mb-4">
+                <div class="col-md-4 mb-4 scroll-animate animate__fadeInUp">
                     <div class="card h-100">
-                        <img src="{{ asset('landing_page/landing_page.jpg') }}" class="card-img-top img-fluid"
+                        <img src="{{ asset('img/produk/landing_page_produk.jpg') }}" class="card-img-top img-fluid"
                             alt="...">
                         <div class="card-body produk">
                             <h5 class="card-title">Jasa Landing Page</h5>
@@ -97,9 +106,9 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4 mb-4">
+                <div class="col-md-4 mb-4 scroll-animate animate__fadeInUp" style="animation-delay: 0.3s;">
                     <div class="card h-100">
-                        <img src="{{ asset('landing_page/landing_page.jpg') }}" class="card-img-top img-fluid"
+                        <img src="{{ asset('img/produk/dinamis_produk.jpg') }}" class="card-img-top img-fluid"
                             alt="...">
                         <div class="card-body produk">
                             <h5 class="card-title">Website Dinamis</h5>
@@ -113,9 +122,9 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4 mb-4">
+                <div class="col-md-4 mb-4 scroll-animate animate__fadeInUp" style="animation-delay: 0.6s;">
                     <div class="card h-100">
-                        <img src="{{ asset('landing_page/landing_page.jpg') }}" class="card-img-top img-fluid"
+                        <img src="{{ asset('img/produk/custom.jpg') }}" class="card-img-top img-fluid"
                             alt="...">
                         <div class="card-body produk">
                             <h5 class="card-title">Custom Website</h5>
@@ -142,13 +151,13 @@
                 <p class="text-light">Beberapa hasil karya terbaik yang telah kami kerjakan</p>
             </div>
             <div class="row g-4">
-                <div class="col-md-4">
+                <div class="col-md-4 scroll-animate animate__zoomIn">
                     <div class="card h-100">
                         <div class="portfolio-header position-relative">
                             <div class="portfolio-grid">
-                                <img src="{{ asset('landing_page/landing_page.jpg') }}" alt="Project 1 Main">
-                                <img src="{{ asset('landing_page/landing_page.jpg') }}" alt="Project 1 Sub">
-                                <img src="{{ asset('landing_page/landing_page.jpg') }}" alt="Project 1 Sub">
+                                <img src="{{ asset('img/portofolio/landing_page_produk.jpg') }}" alt="Project 1 Main">
+                                <img src="{{ asset('img/portofolio/landing_page_produk.jpg') }}" alt="Project 1 Sub">
+                                <img src="{{ asset('img/portofolio/landing_page_produk.jpg') }}" alt="Project 1 Sub">
                             </div>
                             <span
                                 class="position-absolute top-0 start-0 bg-primary text-white px-3 py-1 m-3 rounded-pill small shadow-sm">Web
@@ -161,13 +170,13 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-4 scroll-animate animate__zoomIn" style="animation-delay: 0.3s;">
                     <div class="card h-100">
                         <div class="portfolio-header position-relative">
                             <div class="portfolio-grid">
-                                <img src="{{ asset('landing_page/landing_page.jpg') }}" alt="Project 2 Main">
-                                <img src="{{ asset('landing_page/landing_page.jpg') }}" alt="Project 2 Sub">
-                                <img src="{{ asset('landing_page/landing_page.jpg') }}" alt="Project 2 Sub">
+                                <img src="{{ asset('img/portofolio/custom.jpg') }}" alt="Project 2 Main">
+                                <img src="{{ asset('img/portofolio/custom.jpg') }}" alt="Project 2 Sub">
+                                <img src="{{ asset('img/portofolio/custom.jpg') }}" alt="Project 2 Sub">
                             </div>
                             <span
                                 class="position-absolute top-0 start-0 bg-success text-white px-3 py-1 m-3 rounded-pill small shadow-sm">Landing
@@ -180,13 +189,13 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-4 scroll-animate animate__zoomIn" style="animation-delay: 0.6s;">
                     <div class="card h-100">
                         <div class="portfolio-header position-relative">
                             <div class="portfolio-grid">
-                                <img src="{{ asset('landing_page/landing_page.jpg') }}" alt="Project 3 Main">
-                                <img src="{{ asset('landing_page/landing_page.jpg') }}" alt="Project 3 Sub">
-                                <img src="{{ asset('landing_page/landing_page.jpg') }}" alt="Project 3 Sub">
+                                <img src="{{ asset('img/portofolio/dinamis_produk.jpg') }}" alt="Project 3 Main">
+                                <img src="{{ asset('img/portofolio/dinamis_produk.jpg') }}" alt="Project 3 Sub">
+                                <img src="{{ asset('img/portofolio/dinamis_produk.jpg') }}" alt="Project 3 Sub">
                             </div>
                             <span
                                 class="position-absolute top-0 start-0 bg-warning text-dark px-3 py-1 m-3 rounded-pill small shadow-sm">E-Commerce</span>
@@ -210,7 +219,8 @@
             </div>
             <div class="row row-cols-2 row-cols-md-4 g-4">
                 @foreach ([['name' => 'Laravel', 'logo' => 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/laravel/laravel-original.svg'], ['name' => 'HTML', 'logo' => 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg'], ['name' => 'CSS', 'logo' => 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original.svg'], ['name' => 'Bootstrap', 'logo' => 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/bootstrap/bootstrap-original.svg'], ['name' => 'JavaScript', 'logo' => 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg'], ['name' => 'jQuery', 'logo' => 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/jquery/jquery-original.svg'], ['name' => 'PHP', 'logo' => 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/php/php-original.svg'], ['name' => 'MySQL', 'logo' => 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql/mysql-original.svg']] as $tech)
-                    <div class="col">
+                    <div class="col scroll-animate animate__fadeInUp"
+                        style="animation-delay: {{ $loop->index * 0.2 }}s;">
                         <div class="card border-0 shadow-sm h-100 hover-card text-center">
                             <div class="card-body py-4 d-flex flex-column align-items-center justify-content-center">
                                 <img src="{{ $tech['logo'] }}" alt="{{ $tech['name'] }}" class="mb-3"
@@ -231,7 +241,7 @@
                 <p class="text-white-50">Punya pertanyaan atau butuh konsultasi? Chat kami sekarang!</p>
             </div>
             <div class="row g-5 align-items-center">
-                <div class="col-lg-6">
+                <div class="col-lg-6 scroll-animate animate__fadeInLeft">
                     <div class="row g-4">
                         <div class="col-12">
                             <div class="card border-0 shadow-sm h-100 hover-card">
@@ -245,7 +255,7 @@
                                     </div>
                                     <div>
                                         <h5 class="fw-bold mb-1">Lokasi</h5>
-                                        <p class="mb-0 text-muted">Malang, Jawa Timur, Indonesia</p>
+                                        <p class="mb-0 text-muted">Sleman, Yogyakarta, Indonesia</p>
                                     </div>
                                 </div>
                             </div>
@@ -262,7 +272,7 @@
                                     </div>
                                     <div>
                                         <h5 class="fw-bold mb-1">WhatsApp</h5>
-                                        <p class="mb-0 text-muted">+62 812-3456-7890</p>
+                                        <p class="mb-0 text-muted">+6289602240751 </p>
                                     </div>
                                 </div>
                             </div>
@@ -279,27 +289,28 @@
                                     </div>
                                     <div>
                                         <h5 class="fw-bold mb-1">Email</h5>
-                                        <p class="mb-0 text-muted">admin@jokicoding.com</p>
+                                        <p class="mb-0 text-muted">TsunStudio01@gmail.com</p>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-6">
-                    <form class="p-4 p-md-5 bg-white rounded-4 shadow-lg">
+                <div class="col-lg-6 scroll-animate animate__fadeInRight">
+                    <form action="{{ route('contact.send') }}" method="POST" class="p-4 p-md-5 bg-white rounded-4 shadow-lg">
+                        @csrf
                         <h4 class="fw-bold mb-4">Kirim Pesan</h4>
                         <div class="form-floating mb-3">
-                            <input type="text" class="form-control" id="floatingName" placeholder="Nama Lengkap">
+                            <input type="text" class="form-control" id="floatingName" name="name" placeholder="Nama Lengkap" required>
                             <label for="floatingName">Nama Lengkap</label>
                         </div>
                         <div class="form-floating mb-3">
-                            <input type="email" class="form-control" id="floatingEmail"
-                                placeholder="name@example.com">
+                            <input type="email" class="form-control" id="floatingEmail" name="email"
+                                placeholder="name@example.com" required>
                             <label for="floatingEmail">Email Address</label>
                         </div>
                         <div class="form-floating mb-3">
-                            <textarea class="form-control" placeholder="Leave a comment here" id="floatingMessage" style="height: 150px"></textarea>
+                            <textarea class="form-control" placeholder="Leave a comment here" id="floatingMessage" name="message" style="height: 150px" required></textarea>
                             <label for="floatingMessage">Pesan / Detail Tugas</label>
                         </div>
                         <button class="btn btn-primary w-100 py-3 fw-bold" type="submit">Kirim Pesan</button>
@@ -316,7 +327,8 @@
             </div>
             <div class="row g-4">
                 @foreach ([['name' => 'Budi Santoso', 'role' => 'Mahasiswa TI', 'text' => 'Gila sih, deadline tinggal 2 hari tapi bisa kelar dalam semalam. Codingannya juga rapi banget, gampang dipahamin pas presentasi.'], ['name' => 'Siti Aminah', 'role' => 'Mahasiswa SI', 'text' => 'Harganya pas banget di kantong mahasiswa. Adminnya ramah dan fast respon. Recommended banget buat yang lagi buntu skripsi!'], ['name' => 'Rizky Pratama', 'role' => 'Freelancer', 'text' => 'Hasil website company profile-nya elegan dan profesional. Klien saya puas banget sama hasilnya. Bakal langganan terus nih.']] as $testi)
-                    <div class="col-md-4">
+                    <div class="col-md-4 scroll-animate animate__fadeInUp"
+                        style="animation-delay: {{ $loop->index * 0.3 }}s;">
                         <div class="card h-100 border-0 shadow-sm p-3">
                             <div class="card-body">
                                 <div class="mb-3 text-warning">
@@ -395,6 +407,18 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous">
     </script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    @if (session('success'))
+        <script>
+            Swal.fire({
+                icon: 'success',
+                title: 'Berhasil!',
+                text: '{{ session('success') }}',
+                showConfirmButton: false,
+                timer: 3000
+            });
+        </script>
+    @endif
     <script>
         window.addEventListener('scroll', function() {
             var navbar = document.getElementById('navbar');
@@ -403,6 +427,26 @@
             } else {
                 navbar.classList.remove('scrolled');
             }
+        });
+
+        // Script untuk memicu animasi saat elemen di-scroll (Intersection Observer)
+        document.addEventListener('DOMContentLoaded', () => {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.remove('opacity-0');
+                        entry.target.classList.add('animate__animated');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+
+            document.querySelectorAll('.scroll-animate').forEach(el => {
+                el.classList.add('opacity-0'); // Sembunyikan elemen di awal
+                observer.observe(el);
+            });
         });
     </script>
 </body>
