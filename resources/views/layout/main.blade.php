@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     {{-- icon browser --}}
-    <link rel="icon" href="{{ asset('logo.png') }}" type="image/png">
+    <link rel="icon" href="{{ asset('logo_main.png') }}" type="image/png">
 
     <title>@yield('title')</title>
 
@@ -162,12 +162,13 @@
                 style="padding: 0.75rem 1rem; gap: 0;">
 
                 <div class="sidebar-brand-icon" style="margin: 0; padding: 0;">
-                    <img src="{{ asset('img/undraw_profile.svg') }}" alt="" class="img-fluid"
+                    <img src="{{ asset('logo_main.png') }}" alt="" class="img-fluid"
                         style="width: 35px; height: 35px;">
                     {{-- <h3 class="fw-bold text-light"><span style="color: #1e3c72">Let's</span><span class="text-warning">Coding</span></h3> --}}
                 </div>
-                <div class="sidebar-brand-text" style="margin: 0; padding-left: 8px; font-size: 0.95rem;">Let<sup>
-                        Coding</sup></div>
+                <div class="sidebar-brand-text" style="margin: 0; padding-left: 8px; font-size: 0.95rem;"><sup
+                        style="color: #c7ff44">Let's</sup>
+                    Coding</div>
             </a>
 
             <!-- Divider -->
@@ -221,6 +222,13 @@
                     <i class="fas fa-fw fa-briefcase"></i>
                     <span>Portofolio</span></a>
             </li>
+            {{-- subscribers --}}
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('admin.subscribers') }}">
+                    <i class="fas fa-fw fa-users"></i>
+                    <span>Subscribers</span></a>
+            </li>
+
 
 
             <!-- Sidebar Toggler (Sidebar) -->
@@ -257,8 +265,9 @@
                         <!-- Nav Item - User Information -->
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small"><strong>Nama User</strong>
+                                data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span
+                                    class="mr-2 d-none d-lg-inline text-gray-600 small"><strong>{{ auth()->user()->name }}</strong>
                                     <br> <small>
                                         Administrator</small></span>
                                 <img class="img-profile rounded-circle" src="{{ asset('img/undraw_profile.svg') }}">
@@ -271,9 +280,7 @@
                                     <button type="submit" class="dropdown-item btn-sm btn-warning btn">
                                         <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                                         Logout
-
                                     </button>
-                                    @csrf
                                 </form>
                             </div>
                         </li>
@@ -387,6 +394,28 @@
     <script src="https://cdn.datatables.net/1.13.7/js/dataTables.bootstrap5.min.js"></script>
     <script src="https://cdn.datatables.net/responsive/2.5.0/js/dataTables.responsive.min.js"></script>
     <script src="https://cdn.datatables.net/responsive/2.5.0/js/responsive.bootstrap5.min.js"></script>
+    <script>
+        $(document).on('click', '.btn-delete', function(e) {
+            e.preventDefault();
+
+            let form = $(this).closest('form');
+
+            Swal.fire({
+                title: 'Yakin ingin hapus?',
+                text: "Data tidak bisa dikembalikan setelah dihapus!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#d33',
+                cancelButtonColor: '#3085d6',
+                confirmButtonText: 'Ya, hapus!',
+                cancelButtonText: 'Batal'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    form.submit(); // kirim form kalau user klik hapus
+                }
+            })
+        });
+    </script>
     @yield('script')
 
 </body>

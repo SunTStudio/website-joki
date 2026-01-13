@@ -75,10 +75,10 @@
                                 @endif
                             </td>
                             <td>
-                                <button type="button" class="btn btn-info btn-sm text-white" data-bs-toggle="modal"
-                                    data-bs-target="#detailModal{{ $item->id }}">
+                                {{-- tombol detail tag a --}}
+                                <a href="{{ route('admin.kerjaan.show', $item->id) }}" class="btn btn-info btn-sm">
                                     <i class="fas fa-eye"></i> Detail
-                                </button>
+                                </a>
                                 <a href="{{ route('admin.kerjaan.edit', $item->id) }}"
                                     class="btn btn-warning btn-sm text-white">
                                     <i class="fas fa-edit"></i> Edit

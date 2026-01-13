@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Kerjaan;
+use App\Models\Portofolio;
+use App\Models\ProgresKerjaan;
+use App\Models\Testimoni;
 use Illuminate\Http\Request;
 
 class KerjaanController extends Controller
@@ -61,9 +64,12 @@ class KerjaanController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Kerjaan $kerjaan)
+    public function show($id)
     {
-        //
+        $kerjaan = Kerjaan::find($id);
+        $prosesKerjaan = ProgresKerjaan::where('kerjaan_id', $id)->get();
+        $timelines = ProgresKerjaan::where('kerjaan_id', $id)->get();
+        return view('dinamis.kerjaan.show', compact('kerjaan', 'prosesKerjaan','timelines'));
     }
 
     /**
@@ -83,6 +89,54 @@ class KerjaanController extends Controller
         //
     }
 
+    public function updateStatus(Request $request, $id)
+    {
+        $kerjaan = Kerjaan::findOrFail($id);
+
+        $validated = $request->validate([
+            'status_pengerjaan' => 'required|string',
+            'deskripsi' => 'nullable|string',
+            'status_pembayaran' => 'required|string',
+            'source_code' => 'nullable|url',
+        ]);
+
+        // kerjaan_id ,progres,status_progres
+       $progresKerjaan = ProgresKerjaan::create([
+            'kerjaan_id' => $kerjaan->id,
+            'progres' => $validated['status_pengerjaan'],
+            'deskripsi' => $validated['deskripsi'],
+            'status_progres' => $validated['status_pengerjaan'],
+            'source_code' => $validated['source_code'],
+        ]);
+
+        $kerjaan->update([
+            'status_pengerjaan' => $validated['status_pengerjaan'],
+            'status_pembayaran' => $validated['status_pembayaran'],
+            'source_code' => $validated['source_code'],
+        ]);
+
+        return redirect()->back()->with('success', 'Status kerjaan berhasil diperbarui!');
+    }
+
+    public function revisi(Request $request, $id){
+        $kerjaan = Kerjaan::findOrFail($id);
+
+        // kerjaan_id ,progres,status_progres
+       $progresKerjaan = ProgresKerjaan::create([
+            'kerjaan_id' => $kerjaan->id,
+            'progres' => 'Revisi',
+            'deskripsi' => $request->catatan_revisi,
+            'status_progres' => 'Revisi',
+            'source_code' => null,
+        ]);
+
+        $kerjaan->update([
+            'status_pengerjaan' => 'proses',
+        ]);
+
+        return redirect()->back()->with('success', 'Status kerjaan berhasil diperbarui!');
+    }
+
     /**
      * Remove the specified resource from storage.
      */
@@ -92,27 +146,40 @@ class KerjaanController extends Controller
     }
 
     public function proses(){
-        $proses = Kerjaan::all();
+        // kalo kerjaan status pengerjaan bukan selesai dan batal
+        $proses = Kerjaan::where('status_pengerjaan', '!=', 'selesai')->where('status_pengerjaan', '!=', 'Batal')->get();
         return view('dinamis.proses.index', compact('proses'));
     }
 
     public function selesai(){
-        $selesai = Kerjaan::where('status_pengerjaan', 'Selesai')->get();
+        $selesai = Kerjaan::where('status_pengerjaan', 'selesai')->get();
         return view('dinamis.selesai.index', compact('selesai'));
     }
 
     public function batal(){
-        $batal = Kerjaan::all();
+        $batal = Kerjaan::where('status_pengerjaan', 'Batal')->get();
         return view('dinamis.batal.index', compact('batal'));
     }
 
     public function testimoni(){
-        return view('dinamis.testimoni.index');
+        $testimoni = Testimoni::get();
+        return view('dinamis.testimoni.index', compact('testimoni'));
     }
 
     public function portofolio(){
-        return view('dinamis.portofolio.index');
+        $portofolios = Portofolio::get();
+        return view('dinamis.portofolio.index', compact('portofolios'));
     }
+
+    public function createPortofolio(){
+        return view('dinamis.portofolio.create');
+    }
+
+    public function storePortofolio(Request $request){
+
+    }
+
+    
 
     
 }

@@ -68,8 +68,10 @@
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-7 text-white animate__animated animate__fadeInLeft">
-                    <h1 class="display-4 fw-bold mb-3">Tugas Coding Numpuk? <br> Serahkan pada Ahlinya!</h1>
-                    <p class="lead mb-4">Jasa joki tugas website dan programming profesional. Pengerjaan cepat, coding
+                    <h1 class="display-4 fw-bold mb-3">Butuh Website Buat Usahamu? Atau Tugas Coding Numpuk? <br>
+                        Serahkan pada Kami!</h1>
+                    <p class="lead mb-4">Kami menerima jasa pembuatan website dan aplikasi, joki tugas kuliah, hingga
+                        perbaikan bug. Pengerjaan cepat, coding
                         rapi, dan harga pas di kantong mahasiswa.</p>
                     <a href="#"
                         class="btn btn-light text-primary fw-bold rounded-pill px-4 py-2 shadow-sm">Konsultasi
@@ -89,55 +91,26 @@
                 <p>Produk Kami</p>
             </div>
             <div class="row">
-                <div class="col-md-4 mb-4 scroll-animate animate__fadeInUp">
-                    <div class="card h-100">
-                        <img src="{{ asset('img/produk/landing_page_produk.jpg') }}" class="card-img-top img-fluid"
-                            alt="...">
-                        <div class="card-body produk">
-                            <h5 class="card-title">Jasa Landing Page</h5>
-                            <p class="card-text">Tingkatkan konversi penjualan dengan landing page yang menarik, cepat,
-                                dan responsif untuk semua perangkat.</p>
-                            <div class="mb-3">
-                                <h6 class="fw-bold text-primary mb-0">Mulai Rp 150.000</h6>
-                                <small class="text-muted">Estimasi: 1-2 Hari</small>
+                @foreach ($produk as $item)
+                    <div class="col-md-4 mb-4 scroll-animate animate__fadeInUp"
+                        style="animation-delay: {{ $loop->index * 0.3 }}s;">
+                        <div class="card h-100">
+                            <img src="{{ asset($item->gambar) }}" class="card-img-top img-fluid"
+                                alt="{{ $item->nama_produk ?? $item->judul }}">
+                            <div class="card-body produk">
+                                <h5 class="card-title">{{ $item->nama_produk ?? $item->judul }}</h5>
+                                <p class="card-text">{{ Str::limit($item->deskripsi, 100) }}</p>
+                                <div class="mb-3">
+                                    <h6 class="fw-bold text-primary mb-0">Rp
+                                        {{ number_format($item->harga, 0, ',', '.') }}</h6>
+                                    <small class="text-muted">Estimasi: {{ $item->estimasi ?? '-' }}</small>
+                                </div>
+                                <a href="https://wa.me/6289602240751?text=Halo%20kak,%20saya%20tertarik%20dengan%20produk%20{{ $item->nama ?? $item->judul }}"
+                                    class="btn btn-primary" target="_blank">Pesan Sekarang</a>
                             </div>
-                            <a href="#" class="btn btn-primary">Pesan Sekarang</a>
-
                         </div>
                     </div>
-                </div>
-                <div class="col-md-4 mb-4 scroll-animate animate__fadeInUp" style="animation-delay: 0.3s;">
-                    <div class="card h-100">
-                        <img src="{{ asset('img/produk/dinamis_produk.jpg') }}" class="card-img-top img-fluid"
-                            alt="...">
-                        <div class="card-body produk">
-                            <h5 class="card-title">Website Dinamis</h5>
-                            <p class="card-text">Website dengan panel admin yang memudahkan Anda mengelola konten,
-                                artikel, dan galeri tanpa ribet.</p>
-                            <div class="mb-3">
-                                <h6 class="fw-bold text-primary mb-0">Mulai Rp 350.000</h6>
-                                <small class="text-muted">Estimasi: 3-5 Hari</small>
-                            </div>
-                            <a href="#" class="btn btn-primary">Pesan Sekarang</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 mb-4 scroll-animate animate__fadeInUp" style="animation-delay: 0.6s;">
-                    <div class="card h-100">
-                        <img src="{{ asset('img/produk/custom.jpg') }}" class="card-img-top img-fluid"
-                            alt="...">
-                        <div class="card-body produk">
-                            <h5 class="card-title">Custom Website</h5>
-                            <p class="card-text">Butuh fitur khusus? Kami bangun website sesuai kebutuhan spesifik
-                                bisnis Anda dengan teknologi terbaru.</p>
-                            <div class="mb-3">
-                                <h6 class="fw-bold text-primary mb-0">Hubungi Kami</h6>
-                                <small class="text-muted">Estimasi: Menyesuaikan</small>
-                            </div>
-                            <a href="#" class="btn btn-primary">Pesan Sekarang</a>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </section>
@@ -151,62 +124,26 @@
                 <p class="text-light">Beberapa hasil karya terbaik yang telah kami kerjakan</p>
             </div>
             <div class="row g-4">
-                <div class="col-md-4 scroll-animate animate__zoomIn">
-                    <div class="card h-100">
-                        <div class="portfolio-header position-relative">
-                            <div class="portfolio-grid">
-                                <img src="{{ asset('img/portofolio/landing_page_produk.jpg') }}" alt="Project 1 Main">
-                                <img src="{{ asset('img/portofolio/landing_page_produk.jpg') }}" alt="Project 1 Sub">
-                                <img src="{{ asset('img/portofolio/landing_page_produk.jpg') }}" alt="Project 1 Sub">
+                @foreach ($portofolio as $item)
+                    <div class="col-md-4 scroll-animate animate__zoomIn"
+                        style="animation-delay: {{ $loop->index * 0.3 }}s;">
+                        <div class="card h-100">
+                            <div class="portfolio-header position-relative">
+                                <div class="portfolio-grid">
+                                    <img src="{{ asset('image/' . $item->gambar) }}" alt="{{ $item->judul }}">
+                                    <img src="{{ asset('image/' . ($item->gambar2 ?? $item->gambar)) }}"
+                                        alt="{{ $item->judul }}">
+                                    <img src="{{ asset('image/' . ($item->gambar3 ?? $item->gambar)) }}"
+                                        alt="{{ $item->judul }}">
+                                </div>
                             </div>
-                            <span
-                                class="position-absolute top-0 start-0 bg-primary text-white px-3 py-1 m-3 rounded-pill small shadow-sm">Web
-                                App</span>
-                        </div>
-                        <div class="card-body">
-                            <h5 class="card-title fw-bold">Sistem Informasi Sekolah</h5>
-                            <p class="card-text text-muted">Platform manajemen data siswa, guru, dan nilai akademik
-                                berbasis Laravel yang efisien.</p>
+                            <div class="card-body">
+                                <h5 class="card-title fw-bold">{{ $item->judul }}</h5>
+                                <p class="card-text text-muted">{{ Str::limit($item->deskripsi, 100) }}</p>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-md-4 scroll-animate animate__zoomIn" style="animation-delay: 0.3s;">
-                    <div class="card h-100">
-                        <div class="portfolio-header position-relative">
-                            <div class="portfolio-grid">
-                                <img src="{{ asset('img/portofolio/custom.jpg') }}" alt="Project 2 Main">
-                                <img src="{{ asset('img/portofolio/custom.jpg') }}" alt="Project 2 Sub">
-                                <img src="{{ asset('img/portofolio/custom.jpg') }}" alt="Project 2 Sub">
-                            </div>
-                            <span
-                                class="position-absolute top-0 start-0 bg-success text-white px-3 py-1 m-3 rounded-pill small shadow-sm">Landing
-                                Page</span>
-                        </div>
-                        <div class="card-body">
-                            <h5 class="card-title fw-bold">Company Profile UMKM</h5>
-                            <p class="card-text text-muted">Desain modern dan responsif untuk meningkatkan branding dan
-                                kepercayaan pelanggan bisnis lokal.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 scroll-animate animate__zoomIn" style="animation-delay: 0.6s;">
-                    <div class="card h-100">
-                        <div class="portfolio-header position-relative">
-                            <div class="portfolio-grid">
-                                <img src="{{ asset('img/portofolio/dinamis_produk.jpg') }}" alt="Project 3 Main">
-                                <img src="{{ asset('img/portofolio/dinamis_produk.jpg') }}" alt="Project 3 Sub">
-                                <img src="{{ asset('img/portofolio/dinamis_produk.jpg') }}" alt="Project 3 Sub">
-                            </div>
-                            <span
-                                class="position-absolute top-0 start-0 bg-warning text-dark px-3 py-1 m-3 rounded-pill small shadow-sm">E-Commerce</span>
-                        </div>
-                        <div class="card-body">
-                            <h5 class="card-title fw-bold">Toko Online Fashion</h5>
-                            <p class="card-text text-muted">Website toko online lengkap dengan fitur keranjang belanja,
-                                checkout, dan integrasi pembayaran.</p>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </section>
@@ -297,11 +234,13 @@
                     </div>
                 </div>
                 <div class="col-lg-6 scroll-animate animate__fadeInRight">
-                    <form action="{{ route('contact.send') }}" method="POST" class="p-4 p-md-5 bg-white rounded-4 shadow-lg">
+                    <form action="{{ route('contact.send') }}" method="POST"
+                        class="p-4 p-md-5 bg-white rounded-4 shadow-lg">
                         @csrf
                         <h4 class="fw-bold mb-4">Kirim Pesan</h4>
                         <div class="form-floating mb-3">
-                            <input type="text" class="form-control" id="floatingName" name="name" placeholder="Nama Lengkap" required>
+                            <input type="text" class="form-control" id="floatingName" name="name"
+                                placeholder="Nama Lengkap" required>
                             <label for="floatingName">Nama Lengkap</label>
                         </div>
                         <div class="form-floating mb-3">
@@ -310,7 +249,8 @@
                             <label for="floatingEmail">Email Address</label>
                         </div>
                         <div class="form-floating mb-3">
-                            <textarea class="form-control" placeholder="Leave a comment here" id="floatingMessage" name="message" style="height: 150px" required></textarea>
+                            <textarea class="form-control" placeholder="Leave a comment here" id="floatingMessage" name="message"
+                                style="height: 150px" required></textarea>
                             <label for="floatingMessage">Pesan / Detail Tugas</label>
                         </div>
                         <button class="btn btn-primary w-100 py-3 fw-bold" type="submit">Kirim Pesan</button>
@@ -326,7 +266,7 @@
                 <p class="text-light">Testimoni asli dari klien yang puas dengan layanan kami</p>
             </div>
             <div class="row g-4">
-                @foreach ([['name' => 'Budi Santoso', 'role' => 'Mahasiswa TI', 'text' => 'Gila sih, deadline tinggal 2 hari tapi bisa kelar dalam semalam. Codingannya juga rapi banget, gampang dipahamin pas presentasi.'], ['name' => 'Siti Aminah', 'role' => 'Mahasiswa SI', 'text' => 'Harganya pas banget di kantong mahasiswa. Adminnya ramah dan fast respon. Recommended banget buat yang lagi buntu skripsi!'], ['name' => 'Rizky Pratama', 'role' => 'Freelancer', 'text' => 'Hasil website company profile-nya elegan dan profesional. Klien saya puas banget sama hasilnya. Bakal langganan terus nih.']] as $testi)
+                @foreach ($testimoni as $item)
                     <div class="col-md-4 scroll-animate animate__fadeInUp"
                         style="animation-delay: {{ $loop->index * 0.3 }}s;">
                         <div class="card h-100 border-0 shadow-sm p-3">
@@ -340,13 +280,14 @@
                                         </svg>
                                     @endfor
                                 </div>
-                                <p class="card-text fst-italic">"{{ $testi['text'] }}"</p>
+                                <p class="card-text fst-italic">"{{ $item->isi ?? $item->deskripsi }}"</p>
                                 <div class="d-flex align-items-center mt-4">
-                                    <img src="https://ui-avatars.com/api/?name={{ urlencode($testi['name']) }}&background=random"
-                                        class="rounded-circle me-3" width="50" alt="{{ $testi['name'] }}">
+                                    <img src="{{ $item->gambar ? asset('image/' . $item->gambar) : 'https://ui-avatars.com/api/?name=' . urlencode($item->nama) . '&background=random' }}"
+                                        class="rounded-circle me-3" width="50" height="50"
+                                        style="object-fit: cover;" alt="{{ $item->nama }}">
                                     <div>
-                                        <h6 class="fw-bold mb-0">{{ $testi['name'] }}</h6>
-                                        <small class="text-muted">{{ $testi['role'] }}</small>
+                                        <h6 class="fw-bold mb-0">{{ $item->nama }}</h6>
+                                        <small class="text-muted">{{ $item->role ?? 'Client' }}</small>
                                     </div>
                                 </div>
                             </div>
@@ -392,10 +333,14 @@
                 <div class="col-lg-3 col-md-6">
                     <h5 class="fw-bold mb-3">Newsletter</h5>
                     <p class="text-white-50 small">Dapatkan promo menarik setiap minggunya.</p>
-                    <div class="input-group mb-3">
-                        <input type="text" class="form-control" placeholder="Email Anda" aria-label="Email Anda">
-                        <button class="btn btn-primary" type="button">Subscribe</button>
-                    </div>
+                    <form action="{{ route('newsletter.subscribe') }}" method="POST">
+                        @csrf
+                        <div class="input-group mb-3">
+                            <input type="email" name="email" class="form-control" placeholder="Email Anda"
+                                aria-label="Email Anda" required>
+                            <button class="btn btn-primary" type="submit">Subscribe</button>
+                        </div>
+                    </form>
                 </div>
             </div>
             <hr class="my-4 border-secondary">
@@ -414,6 +359,18 @@
                 icon: 'success',
                 title: 'Berhasil!',
                 text: '{{ session('success') }}',
+                showConfirmButton: false,
+                timer: 3000
+            });
+        </script>
+    @endif
+
+    @if (session('error'))
+        <script>
+            Swal.fire({
+                icon: 'error',
+                title: 'Error!',
+                text: '{{ session('error') }}',
                 showConfirmButton: false,
                 timer: 3000
             });

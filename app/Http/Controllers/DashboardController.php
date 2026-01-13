@@ -2,6 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Portofolio;
+use App\Models\Produk;
+use App\Models\Subscriber;
+use App\Models\Testimoni;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 
@@ -40,6 +44,27 @@ class DashboardController extends Controller
         return back()->with('success', 'Pesan Anda telah terkirim! Kami akan segera menghubungi Anda.');
     }
 
+    public function landingPage(){
+        // batasi tiga data
+        $produk = Produk::limit(3)->get();
+        $testimoni = Testimoni::limit(6)->get();;
+        $portofolio = Portofolio::limit(3)->get();;
+        return view('landing-page.index', compact('produk', 'testimoni', 'portofolio'));
+    }
         // Handle sending email or storing message in database here
+
+        public function subscribe(Request $request){
+            try{
+                $request->validate([
+                    'email' => 'required|email|unique:subscribers',
+                ]);
+                
+                Subscriber::create(['email' => $request->email]);
+                
+                return back()->with('success', 'Berhasil berlangganan!');
+            }catch(\Exception $e){
+                return back()->with('error', 'Email sudah terdaftar,Terima Kasih.');
+            }
+        }
         
 }

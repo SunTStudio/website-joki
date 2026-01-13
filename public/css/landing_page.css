@@ -140,3 +140,31 @@
             background-size: cover;
             background-position: center;
         }
+
+        /* responsif hp */
+        @media only screen and (max-width: 768px) {
+            #testimoni{
+            height: auto;
+
+            }
+            #footer{
+            height: auto;
+            }
+            #kontak{
+            height: auto;
+            }
+            #portofolio{
+            height: auto;
+            }
+            #produk-kami{
+            height: auto;
+            }
+            #hero{
+                padding-top: 4.5rem;
+            height: auto;
+            }
+            #teknologi{
+            height: auto;
+            }
+        
+        }
